@@ -8,15 +8,13 @@
 
 #SBATCH --gpus-per-node=1
 
-#SBATCH --cpus-per-task=6
+#SBATCH --cpus-per-task=3
 
-#SBATCH --mem-per-cpu=16G
+#SBATCH --mem-per-cpu=12G
 
 #SBATCH --job-name=nn_training ## Name of job
 
 #SBATCH --output=vae_gan.%j.out ##Name of output file
-
-#SBATCH --nodelist=g004
 
 module load py-venv-ml/nightly
 export PYTHONPATH=$PYTHONPATH:/mnt/home/taylcard/dev/EDVAE/

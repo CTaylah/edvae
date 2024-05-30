@@ -32,10 +32,10 @@ class Reporter(SummaryWriter):
         self.losses[name] += value
 
     # Write the losses to tensoboard file
-    # minibatch_size is used to calculate the average loss
-    def write_losses(self, epoch, minibatch_size: int):
+    # batch_iterations is used to calculate the average loss
+    def write_losses(self, epoch, batch_iterations: int):
         for loss in self.losses:
-            self.add_scalar(loss, self.losses[loss]/minibatch_size, epoch)
+            self.add_scalar(loss, self.losses[loss]/batch_iterations, epoch)
 
     # Add a list of loss labels to the reporter
     def add_loss_labels(self, names: list[str]):
