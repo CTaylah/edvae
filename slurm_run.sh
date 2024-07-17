@@ -8,9 +8,9 @@
 
 #SBATCH --gpus-per-node=1
 
-#SBATCH --cpus-per-task=3
+#SBATCH --cpus-per-task=2
 
-#SBATCH --mem-per-cpu=12G
+#SBATCH --mem-per-cpu=82G
 
 #SBATCH --job-name=nn_training ## Name of job
 

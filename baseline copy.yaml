@@ -1,0 +1,168 @@
+HParams:
+  run_name: "make_plots_alpha=10 1024"
+  # run_name: "3m_dataset lam=0 256_latent"
+  log_directory: "/mnt/home/taylcard/dev/logs/present2/"
+  num_epochs: 0
+  gen_weight: 20
+  kl_weight: 0.15
+  disc_warmup: 0
+  batch_size: 256
+  mmvae_lr: 0.001
+  disc_lr: 0.001
+  seed: 42
+
+Shared_VAE:
+  encoder:
+    - layer: Linear
+      in: 448
+      out: 384
+    - layer: BatchNorm1d
+      in: 384
+    - activation: ReLU
+    - layer: Linear
+      in: 384
+      out: 128
+      activation: ReLU
+  decoder:
+    - layer: Linear
+      in: 128
+      out: 384
+    - layer: BatchNorm1d
+      in: 384
+    - activation: ReLU
+    - layer: Linear
+      in: 384
+      out: 448
+    - activation: ReLU
+  mu:
+    - layer: Linear
+      in: 128
+      out: 128
+  logvar:
+    - layer: Linear
+      in: 128
+      out: 128
+
+Human_Expert:
+  encoder:
+    - layer: Linear
+      in: 60_664
+      out: 512
+    - layer: BatchNorm1d
+      in: 512
+    - activation: ReLU
+    - layer: Linear
+      in: 512
+      out: 480
+    - layer: BatchNorm1d
+      in: 480
+    - activation: ReLU
+    - layer: Linear
+      in: 480
+      out: 448
+    - activation: ReLU
+  decoder:
+    - layer: Linear
+      in: 448
+      out: 480
+    - layer: BatchNorm1d
+      in: 480
+    - activation: ReLU
+    - layer: Linear
+      in: 480
+      out: 512
+    - layer: BatchNorm1d
+      in: 512
+    - activation: ReLU
+    - layer: Linear
+      in: 512
+      out: 60_664
+      activation: ReLU
+
+Mouse_Expert:
+  encoder:
+    - layer: Linear
+      in: 52_417
+      out: 512
+    - layer: BatchNorm1d
+      in: 512
+    - activation: ReLU
+    - layer: Linear
+      in: 512
+      out: 480
+    - layer: BatchNorm1d
+      in: 480
+    - activation: ReLU
+    - layer: Linear
+      in: 480
+      out: 448
+    - activation: ReLU
+  decoder:
+    - layer: Linear
+      in: 448
+      out: 480
+    - layer: BatchNorm1d
+      in: 480
+    - activation: ReLU
+    - layer: Linear
+      in: 480
+      out: 512
+    - layer: BatchNorm1d
+      in: 512
+    - activation: ReLU
+    - layer: Linear
+      in: 512
+      out: 52_417
+      activation: ReLU
+
+Discriminator0:
+  model:
+    - layer: Linear
+      in: 384
+      out: 128
+    - layer: BatchNorm1d
+      in: 128
+    - activation: Sigmoid
+    - layer: Linear
+      in: 128
+      out: 64
+      activation: Sigmoid
+    - layer: Linear
+      in: 64
+      out: 1 
+      activation: Sigmoid
+
+Discriminator1:
+  model:
+    - layer: Linear
+      in: 128
+      out: 128
+    - layer: BatchNorm1d
+      in: 128
+    - activation: Sigmoid
+    - layer: Linear
+      in: 128
+      out: 64
+      activation: Sigmoid
+    - layer: Linear
+      in: 64
+      out: 1 
+      activation: Sigmoid
+
+Discriminator2:
+  model:
+    - layer: Linear
+      in: 128
+      out: 128
+    - layer: BatchNorm1d
+      in: 128
+    - activation: Sigmoid
+    - layer: Linear
+      in: 128
+      out: 64
+      activation: Sigmoid
+    - layer: Linear
+      in: 64
+      out: 1 
+      activation: Sigmoid
+

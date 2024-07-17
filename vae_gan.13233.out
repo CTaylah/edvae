@@ -1,0 +1,73 @@
+2024-07-17 13:51:28.806996: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2024-07-17 13:51:29.017271: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-07-17 13:51:30.194551: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+EDVAE(
+  (shared_vae): VAE(
+    (encoder): Sequential(
+      (0): Linear(in_features=448, out_features=384, bias=True)
+      (1): BatchNorm1d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+      (3): Linear(in_features=384, out_features=128, bias=True)
+      (4): ReLU()
+    )
+    (decoder): Sequential(
+      (0): Linear(in_features=128, out_features=384, bias=True)
+      (1): BatchNorm1d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+      (3): Linear(in_features=384, out_features=448, bias=True)
+      (4): ReLU()
+    )
+    (mean): Sequential(
+      (0): Linear(in_features=128, out_features=128, bias=True)
+    )
+    (var): Sequential(
+      (0): Linear(in_features=128, out_features=128, bias=True)
+    )
+  )
+  (human_expert): Expert(
+    (encoder): Sequential(
+      (0): Linear(in_features=60664, out_features=512, bias=True)
+      (1): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+      (3): Linear(in_features=512, out_features=480, bias=True)
+      (4): BatchNorm1d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (5): ReLU()
+      (6): Linear(in_features=480, out_features=448, bias=True)
+      (7): ReLU()
+    )
+    (decoder): Sequential(
+      (0): Linear(in_features=448, out_features=480, bias=True)
+      (1): BatchNorm1d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+      (3): Linear(in_features=480, out_features=512, bias=True)
+      (4): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (5): ReLU()
+      (6): Linear(in_features=512, out_features=60664, bias=True)
+      (7): ReLU()
+    )
+  )
+  (mouse_expert): Expert(
+    (encoder): Sequential(
+      (0): Linear(in_features=52417, out_features=512, bias=True)
+      (1): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+      (3): Linear(in_features=512, out_features=480, bias=True)
+      (4): BatchNorm1d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (5): ReLU()
+      (6): Linear(in_features=480, out_features=448, bias=True)
+      (7): ReLU()
+    )
+    (decoder): Sequential(
+      (0): Linear(in_features=448, out_features=480, bias=True)
+      (1): BatchNorm1d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+      (3): Linear(in_features=480, out_features=512, bias=True)
+      (4): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (5): ReLU()
+      (6): Linear(in_features=512, out_features=52417, bias=True)
+      (7): ReLU()
+    )
+  )
+)
+train_md
